@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('partials/head.ejs') %>
+  <%- include('partials/navbar.ejs') %>
+
+
+
+
+    <body>
+      <h1>
+        <%= title %>
+      </h1>
+      <p> Add a task
+      </p>
+      <a class="btn btn-primary" href="/items/add-item">
+        <i class="fa fa-plus-circle"></i>
+      </a>
+      <div class="container mt-3">
+
+        <% if(items.length> 0){%>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Task</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% items.forEach((item)=> {%>
+                <tr>
+                  <th scope="row">
+                    <%= item.id%>
+                  </th>
+                  <td>
+                    <%= item.name %>
+                  </td>
+                  <td>
+                    <%= item.task%>
+                  </td>
+                  <td>
+                    <div aria-label="actions">
+                      <form action=<%="/items/delete-item/" + item.id%> method="post">
+                        <a class="btn btn-primary" href=<%="/items/edit-item/" + item.id%> ><i
+                            class="far fa-edit"></i></a>
+
+                        <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+                <% }) %>
+            </tbody>
+          </table>
+          <%}else{%>
+            <div class="container mx-auto">
+              <p class="mt-3 text-center "> There is no tasks left </p>
+            </div>
+            <%}%>
+
+      </div>
+    </body>
+
+
+
+
+
+    <%- include('./partials/footer.ejs') %>
+
+</html>

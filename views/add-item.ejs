@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<%- include('partials/head.ejs') %>
+    <%- include('partials/navbar.ejs') %>
+
+
+
+
+        <body>
+            <h1>
+                <%= title %>
+            </h1>
+            <p>Welcome to <%= title %>
+            </p>
+
+
+            <div class="container mt-3">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Task</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form action="/items/add-item" method="post">
+                            <tr>
+                                <th scope="row">
+                                    #
+                                </th>
+                                <td>
+                                    <input name="name" value="" placeholder=" task name">
+                                </td>
+                                <td>
+                                    <input name="task" value="" placeholder=" task info">
+                                </td>
+                                <td>
+                                    <div aria-label="actions">
+                                        <button class="btn btn-primary submit" id="submit"><i
+                                                class="fa fa-paper-plane "></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+
+
+                        </form>
+
+                    </tbody>
+                </table>
+            </div>
+        </body>
+
+
+
+
+
+        <%- include('./partials/footer.ejs') %>
+
+</html>
